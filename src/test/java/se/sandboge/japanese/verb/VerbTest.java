@@ -9,7 +9,7 @@ public class VerbTest {
     public void masuFormRu() throws Exception {
         Verb verb = new Verb("食べる", VerbType.ru);
 
-        String result = verb.masuForm();
+        String result = verb.asMasuForm();
 
         assertEquals("食べます", result);
     }
@@ -18,7 +18,7 @@ public class VerbTest {
     public void masuFormUSu() throws Exception {
         Verb verb = new Verb("話す", VerbType.u);
 
-        String result = verb.masuForm();
+        String result = verb.asMasuForm();
 
         assertEquals("話します", result);
     }
@@ -27,14 +27,14 @@ public class VerbTest {
     public void masuFormIError() throws Exception {
         Verb verb = new Verb("食べる", VerbType.irregular);
 
-        String result = verb.masuForm();
+        verb.asMasuForm();
     }
 
     @Test
-    public void masuFormIIku() throws Exception {
+    public void masuFormIKuru() throws Exception {
         Verb verb = new Verb("来る", VerbType.irregular);
 
-        String result = verb.masuForm();
+        String result = verb.asMasuForm();
 
         assertEquals("来ます", result);
     }
@@ -43,9 +43,18 @@ public class VerbTest {
     public void masuFormISuru() throws Exception {
         Verb verb = new Verb("する", VerbType.irregular);
 
-        String result = verb.masuForm();
+        String result = verb.asMasuForm();
 
         assertEquals("します", result);
+    }
+
+    @Test
+    public void masenFormRu() throws Exception {
+        Verb verb = new Verb("食べる", VerbType.ru);
+
+        String result = verb.asMasenForm();
+
+        assertEquals("食べません", result);
     }
 
 }
