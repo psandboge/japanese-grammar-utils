@@ -1,6 +1,8 @@
 package se.sandboge.japanese.verb;
 
 import org.junit.Test;
+import se.sandboge.japanese.conjugation.Verb;
+import se.sandboge.japanese.conjugation.VerbType;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +11,7 @@ public class VerbTest {
     public void masuFormRu() throws Exception {
         Verb verb = new Verb("食べる", VerbType.ru);
 
-        String result = verb.asMasuForm();
+        String result = verb.asPoliteForm();
 
         assertEquals("食べます", result);
     }
@@ -18,7 +20,7 @@ public class VerbTest {
     public void masuFormUSu() throws Exception {
         Verb verb = new Verb("話す", VerbType.u);
 
-        String result = verb.asMasuForm();
+        String result = verb.asPoliteForm();
 
         assertEquals("話します", result);
     }
@@ -27,14 +29,14 @@ public class VerbTest {
     public void masuFormIError() throws Exception {
         Verb verb = new Verb("食べる", VerbType.irregular);
 
-        verb.asMasuForm();
+        verb.asPoliteForm();
     }
 
     @Test
     public void masuFormIKuru() throws Exception {
         Verb verb = new Verb("来る", VerbType.irregular);
 
-        String result = verb.asMasuForm();
+        String result = verb.asPoliteForm();
 
         assertEquals("来ます", result);
     }
@@ -43,7 +45,7 @@ public class VerbTest {
     public void masuFormISuru() throws Exception {
         Verb verb = new Verb("する", VerbType.irregular);
 
-        String result = verb.asMasuForm();
+        String result = verb.asPoliteForm();
 
         assertEquals("します", result);
     }
@@ -52,7 +54,7 @@ public class VerbTest {
     public void masenFormRu() throws Exception {
         Verb verb = new Verb("食べる", VerbType.ru);
 
-        String result = verb.asMasenForm();
+        String result = verb.asPoliteNegForm();
 
         assertEquals("食べません", result);
     }

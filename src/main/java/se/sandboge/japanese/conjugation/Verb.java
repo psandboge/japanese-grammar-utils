@@ -1,8 +1,4 @@
-package se.sandboge.japanese.verb;
-
-import static se.sandboge.japanese.verb.VerbType.irregular;
-import static se.sandboge.japanese.verb.VerbType.ru;
-import static se.sandboge.japanese.verb.VerbType.u;
+package se.sandboge.japanese.conjugation;
 
 public class Verb {
 
@@ -47,17 +43,17 @@ public class Verb {
         }
     }
 
-    public String asMasuForm() {
+    public String asPoliteForm() {
         return asStemForm() + "ます";
     }
 
     public String asStemForm() {
-        if (verbType.equals(ru)) {
+        if (verbType.equals(VerbType.ru)) {
             if (!(dictionaryVerb.charAt(dictionaryVerb.length() - 1) == 'る')) {
                 throw new IllegalArgumentException("Ru verbs must end with る!");
             }
             return dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
-        } else if (verbType.equals(u)) {
+        } else if (verbType.equals(VerbType.u)) {
             char end = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
             String base = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
             switch (end) {
@@ -82,7 +78,7 @@ public class Verb {
                 default:
                     throw new IllegalArgumentException("U verbs must end with one of う、る、つ、ぶ、む、ぬ、く、ぐ、す!");
             }
-        } else if (verbType.equals(irregular)) {
+        } else if (verbType.equals(VerbType.irregular)) {
             if (dictionaryVerb.endsWith("する")) {
                 return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "し";
             } else if (dictionaryVerb.endsWith("くる") || dictionaryVerb.endsWith("来る")) {
@@ -92,7 +88,7 @@ public class Verb {
         throw new IllegalArgumentException("Unhandled verb type.");
     }
 
-    public String asMasenForm() {
+    public String asPoliteNegForm() {
         return asStemForm() + "ません";
     }
 }
