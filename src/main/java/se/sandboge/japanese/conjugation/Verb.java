@@ -82,7 +82,7 @@ public class Verb {
             if (dictionaryVerb.endsWith("する")) {
                 return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "し";
             } else if (dictionaryVerb.endsWith("くる") || dictionaryVerb.endsWith("来る")) {
-                return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "来";
+                return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "き";
             }
         }
         throw new IllegalArgumentException("Unhandled verb type.");
@@ -90,5 +90,13 @@ public class Verb {
 
     public String asPoliteNegForm() {
         return asStemForm() + "ません";
+    }
+
+    public String asPolitePastForm() {
+        return asStemForm() + "ました";
+    }
+
+    public String asPolitePastNegForm() {
+        return asStemForm() + "ませんでした";
     }
 }

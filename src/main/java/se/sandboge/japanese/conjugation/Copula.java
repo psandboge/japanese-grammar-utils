@@ -2,7 +2,7 @@ package se.sandboge.japanese.conjugation;
 
 
 public class Copula {
-    String expression;
+    private String expression;
 
     public Copula(String expression) {
         this.expression = expression;

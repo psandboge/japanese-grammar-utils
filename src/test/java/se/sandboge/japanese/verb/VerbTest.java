@@ -38,7 +38,7 @@ public class VerbTest {
 
         String result = verb.asPoliteForm();
 
-        assertEquals("来ます", result);
+        assertEquals("きます", result);
     }
 
     @Test
@@ -58,5 +58,33 @@ public class VerbTest {
 
         assertEquals("食べません", result);
     }
+
+    @Test
+    public void stemFormRu() throws Exception {
+        Verb verb = new Verb("食べる", VerbType.ru);
+
+        String result = verb.asStemForm();
+
+        assertEquals("食べ", result);
+    }
+
+    @Test
+    public void politePastFormRu() throws Exception {
+        Verb verb = new Verb("食べる", VerbType.ru);
+
+        String result = verb.asPolitePastForm();
+
+        assertEquals("食べました", result);
+    }
+
+    @Test
+    public void politePastNegFormRu() throws Exception {
+        Verb verb = new Verb("食べる", VerbType.ru);
+
+        String result = verb.asPolitePastNegForm();
+
+        assertEquals("食べませんでした", result);
+    }
+
 
 }
