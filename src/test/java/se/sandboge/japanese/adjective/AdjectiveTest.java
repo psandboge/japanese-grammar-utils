@@ -10,12 +10,39 @@ import static org.junit.Assert.assertEquals;
 
 public class AdjectiveTest {
     @Test
-    public void dictionaryForm() {
+    public void politeForm() {
         Adjective adjective = new Adjective("元気", AdjectiveType.na);
 
-        String result = adjective.asPolite();
+        String result = adjective.asPoliteForm();
 
         assertEquals("元気です", result);
+    }
+
+    @Test
+    public void politePastForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asPolitePastForm();
+
+        assertEquals("元気でした", result);
+    }
+
+    @Test
+    public void politeNegForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asPoliteNegForm();
+
+        assertEquals("元気じゃないです", result);
+    }
+
+    @Test
+    public void politePastNegForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asPolitePastNegForm();
+
+        assertEquals("元気じゃなかったです", result);
     }
 
 }
