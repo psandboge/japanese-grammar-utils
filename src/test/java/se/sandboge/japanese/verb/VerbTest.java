@@ -95,5 +95,18 @@ public class VerbTest {
         assertEquals("食べましょう", result);
     }
 
+    @Test
+    public void constructorRu() {
+        Verb verb = new Verb("食べる");
+
+        assertEquals("食べ", verb.asStemForm());
+    }
+
+    @Test
+    public void constructorU() {
+        Verb verb = new Verb("知る");
+
+        assertEquals("知り", verb.asStemForm());
+    }
 
 }

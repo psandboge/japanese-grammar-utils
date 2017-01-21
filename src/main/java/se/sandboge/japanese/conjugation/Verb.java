@@ -1,18 +1,114 @@
 package se.sandboge.japanese.conjugation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Verb {
 
     private final String dictionaryVerb;
 
-    private final VerbType verbType;
+    private VerbType verbType;
+    private static Map<String, String> uVerbs = new HashMap<>();
+    static {
+        uVerbs.put("要る", "要る");
+        uVerbs.put("帰る", "かえる");
+        uVerbs.put("切る", "きる");
+        uVerbs.put("喋る", "しゃべる");
+        uVerbs.put("知る", "しる");
+        uVerbs.put("入る", "はいる");
+        uVerbs.put("走る", "はしる");
+        uVerbs.put("減る", "へる");
+        uVerbs.put("焦る", "あせる");
+        uVerbs.put("限る", "かぎる");
+        uVerbs.put("蹴る", "ける");
+        uVerbs.put("滑る", "すべる");
+        uVerbs.put("握る", "にぎる");
+        uVerbs.put("練る", "ねる");
+        uVerbs.put("参る", "まいる");
+        uVerbs.put("交じる", "まじる");
+        uVerbs.put("嘲る", "あざける");
+        uVerbs.put("覆る", "くつがえる");
+        uVerbs.put("遮る", "さえぎる");
+        uVerbs.put("罵る", "ののしる");
+        uVerbs.put("捻る", "ひねる");
+        uVerbs.put("翻る", "ひるがえる");
+        uVerbs.put("滅入る", "めいる");
+        uVerbs.put("蘇る", "よみがえる");
+    }
 
     public Verb(String dictionaryVerb, VerbType verbType) {
         this.dictionaryVerb = dictionaryVerb;
         this.verbType = verbType;
-        checkVerbConcistency(dictionaryVerb, verbType);
+        checkVerbConcistency();
     }
 
-    private void checkVerbConcistency(String dictionaryVerb, VerbType verbType) {
+    public Verb(String dictionaryVerb) {
+        this.dictionaryVerb = dictionaryVerb;
+        deduceVerbType();
+    }
+
+    private void deduceVerbType() {
+        if (dictionaryVerb.endsWith("来る") || dictionaryVerb.endsWith("くる") || dictionaryVerb.endsWith("する")) {
+            this.verbType = VerbType.irregular;
+        } else {
+            char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+            switch (last) {
+                case 'う':
+                case 'つ':
+                case 'ぶ':
+                case 'ぬ':
+                case 'む':
+                case 'く':
+                case 'ぐ':
+                case 'す':
+                    verbType = VerbType.u;
+                    break;
+                case 'る':
+                    char secondLast = dictionaryVerb.charAt(dictionaryVerb.length() - 2);
+                    switch (secondLast) {
+                        case 'い':
+                        case 'え':
+                        case 'き':
+                        case 'け':
+                        case 'し':
+                        case 'せ':
+                        case 'ち':
+                        case 'て':
+                        case 'に':
+                        case 'ね':
+                        case 'ひ':
+                        case 'へ':
+                        case 'み':
+                        case 'め':
+                        case 'り':
+                        case 'れ':
+                        case 'ぎ':
+                        case 'げ':
+                        case 'じ':
+                        case 'ぜ':
+                        case 'ぢ':
+                        case 'で':
+                        case 'び':
+                        case 'べ':
+                        case 'ぴ':
+                        case 'ぺ':
+                            if (uVerbs.containsKey(dictionaryVerb)) {
+                                verbType = VerbType.u;
+                            } else {
+                                verbType = VerbType.ru;
+                            }
+                            break;
+                        default:
+                            verbType = VerbType.u;
+                    }
+                    break;
+                default:
+                    throw new IllegalArgumentException("Not a proper verb in dictionary form");
+            }
+        }
+    }
+
+    private void checkVerbConcistency() {
         char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
         switch (verbType) {
             case ru:
