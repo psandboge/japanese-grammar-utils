@@ -99,4 +99,8 @@ public class Verb {
     public String asPolitePastNegForm() {
         return asStemForm() + "ませんでした";
     }
+
+    public String asPoliteVolitionalForm() {
+        return asStemForm() + "ましょう";
+    }
 }

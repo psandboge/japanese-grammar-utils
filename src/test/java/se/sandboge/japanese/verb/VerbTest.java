@@ -86,5 +86,14 @@ public class VerbTest {
         assertEquals("食べませんでした", result);
     }
 
+    @Test
+    public void politeVolitionalFormRu() throws Exception {
+        Verb verb = new Verb("食べる", VerbType.ru);
+
+        String result = verb.asPoliteVolitionalForm();
+
+        assertEquals("食べましょう", result);
+    }
+
 
 }
