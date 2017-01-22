@@ -109,4 +109,66 @@ public class VerbTest {
         assertEquals("知り", verb.asStemForm());
     }
 
+    @Test
+    public void teFormRu() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asTeForm();
+
+        assertEquals("食べて", result);
+    }
+
+    @Test
+    public void teFormU() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asTeForm();
+
+        assertEquals("知って", result);
+    }
+
+    @Test
+    public void politeRequestForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asPoliteRequestForm();
+
+        assertEquals("知ってください", result);
+    }
+
+    @Test
+    public void politePermissionForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asPolitePermissionForm();
+
+        assertEquals("知ってもいいです", result);
+    }
+
+    @Test
+    public void politeProhibitionForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asPoliteProhibitionForm();
+
+        assertEquals("知ってはいけません", result);
+    }
+
+    @Test
+    public void inProgressForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asInProgressForm();
+
+        assertEquals("知っている", result);
+    }
+
+    @Test
+    public void movementPurposeForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asMovementPurposeForm();
+
+        assertEquals("知りに行く", result);
+    }
 }

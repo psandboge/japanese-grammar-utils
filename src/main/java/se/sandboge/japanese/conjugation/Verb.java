@@ -199,4 +199,60 @@ public class Verb {
     public String asPoliteVolitionalForm() {
         return asStemForm() + "ましょう";
     }
+
+    public String asTeForm() {
+        String base = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
+        switch (verbType) {
+            case ru:
+                return asStemForm() + 'て';
+            case u:
+                char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+                if (dictionaryVerb.endsWith("行く") || dictionaryVerb.equals("いく")) {
+                    return base + "って";
+                }
+                switch (last) {
+                    case 'う':
+                    case 'つ':
+                    case 'る':
+                        return base + "って";
+                    case 'む':
+                    case 'ぶ':
+                    case 'ぬ':
+                        return base + "んで";
+                    case 'く':
+                        return base + "いて";
+                    case 'ぐ':
+                        return base + "いで";
+                    case 'す':
+                        return base + "して";
+                }
+            case irregular:
+                if (dictionaryVerb.endsWith("する")) {
+                    return base + "して";
+                } else {
+                    return base + "来て";
+                }
+        }
+        return "";
+    }
+
+    public String asPoliteRequestForm() {
+        return asTeForm() + "ください";
+    }
+
+    public String asPolitePermissionForm() {
+        return asTeForm() + "もいいです";
+    }
+
+    public String asPoliteProhibitionForm() {
+        return asTeForm() + "はいけません";
+    }
+
+    public String asInProgressForm() {
+        return asTeForm() + "いる";
+    }
+
+    public String asMovementPurposeForm() {
+        return asStemForm() + "に行く";
+    }
 }
