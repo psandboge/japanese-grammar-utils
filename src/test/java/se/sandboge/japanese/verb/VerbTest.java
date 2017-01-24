@@ -171,4 +171,42 @@ public class VerbTest {
 
         assertEquals("知りに行く", result);
     }
+
+    @Test
+    public void shortForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asShortForm();
+
+        assertEquals("知る", result);
+    }
+
+    @Test
+    public void shortNegForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asShortNegForm();
+
+        assertEquals("知らない", result);
+    }
+
+    @Test
+    public void shortPastForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asShortPastForm();
+
+        assertEquals("知った", result);
+    }
+
+    @Test
+    public void shortPastNegForm() {
+        Verb verb = new Verb("知る");
+
+        String result = verb.asShortPastNegForm();
+
+        assertEquals("知らなかった", result);
+    }
+
+
 }

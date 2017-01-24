@@ -228,9 +228,9 @@ public class Verb {
                 }
             case irregular:
                 if (dictionaryVerb.endsWith("する")) {
-                    return base + "して";
+                    return base.substring(0, base.length() - 1) + "して";
                 } else {
-                    return base + "来て";
+                    return base.substring(0, base.length() - 1) + "来て";
                 }
         }
         return "";
@@ -254,5 +254,65 @@ public class Verb {
 
     public String asMovementPurposeForm() {
         return asStemForm() + "に行く";
+    }
+
+    public String asShortForm() {
+        return dictionaryVerb;
+    }
+
+    public String asShortNegForm() {
+        String base = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
+        switch (verbType) {
+            case ru:
+                return asStemForm() + "ない";
+            case u:
+                char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+                if (dictionaryVerb.equals("ある")) {
+                    return "ない";
+                }
+                switch (last) {
+                    case 'う':
+                        return base + "わない";
+                    case 'る':
+                        return base + "らない";
+                    case 'つ':
+                        return base + "たない";
+                    case 'ぶ':
+                        return base + "ばない";
+                    case 'む':
+                        return base + "まない";
+                    case 'ぬ':
+                        return base + "なない";
+                    case 'く':
+                        return base + "かない";
+                    case 'ぐ':
+                        return base + "がない";
+                    case 'す':
+                        return base + "さない";
+                    default:
+                        throw new IllegalArgumentException("U verbs must end with one of う、る、つ、ぶ、む、ぬ、く、ぐ、す!");
+                }
+            case irregular:
+                if (dictionaryVerb.endsWith("する")) {
+                    return base.substring(0, base.length() - 1) + "しない";
+                } else {
+                    return base.substring(0, base.length() - 1) + "こない";
+                }
+        }
+        throw new IllegalArgumentException("U verbs must end with one of う、る、つ、ぶ、む、ぬ、く、ぐ、す!");
+    }
+
+    public String asShortPastForm() {
+        String te = asTeForm();
+        if (te.endsWith("て")) {
+            return te.substring(0, te.length() -1) + 'た';
+        } else {
+            return te.substring(0, te.length() -1) + 'だ';
+        }
+    }
+
+    public String asShortPastNegForm() {
+        String sn = asShortNegForm();
+        return sn.substring(0, sn.length() -1) + "かった";
     }
 }
