@@ -45,4 +45,40 @@ public class AdjectiveTest {
         assertEquals("元気じゃなかったです", result);
     }
 
+    @Test
+    public void shortForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asShortForm();
+
+        assertEquals("元気だ", result);
+    }
+
+    @Test
+    public void shortPastForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asShortPastForm();
+
+        assertEquals("元気だった", result);
+    }
+
+    @Test
+    public void shortNegForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asShortNegForm();
+
+        assertEquals("元気じゃない", result);
+    }
+
+    @Test
+    public void shortPastNegForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asShortPastNegForm();
+
+        assertEquals("元気じゃなかった", result);
+    }
+
 }
