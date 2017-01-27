@@ -315,4 +315,20 @@ public class Verb {
         String sn = asShortNegForm();
         return sn.substring(0, sn.length() -1) + "かった";
     }
+
+    public String asOpinionQuoteForm() {
+        return asShortForm() + "と思います";
+    }
+
+    public String asHeardQuoteForm() {
+        return asShortForm() + "と言っていました";
+    }
+
+    public String asPoliteRefrainRequestForm() {
+        return asShortNegForm() + "でください";
+    }
+
+    public String asNoun() {
+        return asShortForm() + 'の';
+    }
 }
