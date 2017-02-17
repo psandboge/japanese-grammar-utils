@@ -36,10 +36,16 @@ public class Verb {
         uVerbs.put("蘇る", "よみがえる");
     }
 
-    public Verb(String dictionaryVerb, VerbType verbType) {
+    public Verb(String dictionaryVerb, VerbType verbType, boolean consistencyCheck) {
         this.dictionaryVerb = dictionaryVerb;
         this.verbType = verbType;
-        checkVerbConcistency();
+        if (consistencyCheck) {
+            checkVerbConcistency();
+        }
+    }
+
+    public Verb(String dictionaryVerb, VerbType verbType) {
+        this(dictionaryVerb, verbType, true);
     }
 
     public Verb(String dictionaryVerb) {
@@ -145,9 +151,9 @@ public class Verb {
 
     public String asStemForm() {
         if (verbType.equals(VerbType.ru)) {
-            if (!(dictionaryVerb.charAt(dictionaryVerb.length() - 1) == 'る')) {
-                throw new IllegalArgumentException("Ru verbs must end with る!");
-            }
+//            if (!(dictionaryVerb.charAt(dictionaryVerb.length() - 1) == 'る')) {
+//                throw new IllegalArgumentException("Ru verbs must end with る!");
+//            }
             return dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
         } else if (verbType.equals(VerbType.u)) {
             char end = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
