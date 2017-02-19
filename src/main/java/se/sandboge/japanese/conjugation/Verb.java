@@ -1,11 +1,15 @@
 package se.sandboge.japanese.conjugation;
 
+import se.sandboge.japanese.dictionary.Dictionary;
+import se.sandboge.japanese.dictionary.DictionaryHolder;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Verb {
 
     private final String dictionaryVerb;
+    private final Dictionary dictionary;
 
     private VerbType verbType;
     private static Map<String, String> uVerbs = new HashMap<>();
@@ -34,9 +38,11 @@ public class Verb {
         uVerbs.put("翻る", "ひるがえる");
         uVerbs.put("滅入る", "めいる");
         uVerbs.put("蘇る", "よみがえる");
+        uVerbs.put("乗る", "のる");
     }
 
     private Verb(String dictionaryVerb, VerbType verbType, boolean consistencyCheck) {
+        dictionary = DictionaryHolder.getDictionary();
         this.dictionaryVerb = dictionaryVerb;
         this.verbType = verbType;
         if (consistencyCheck) {
@@ -49,6 +55,7 @@ public class Verb {
     }
 
     public Verb(String dictionaryVerb) {
+        dictionary = DictionaryHolder.getDictionary();
         this.dictionaryVerb = dictionaryVerb;
         deduceVerbType();
     }
@@ -96,7 +103,7 @@ public class Verb {
                     verbType = VerbType.u;
                     break;
                 case 'る':
-                    char secondLast = tryToMakeHiragana().charAt(dictionaryVerb.length() - 2);
+                    char secondLast = dictionary.lookupReading(dictionaryVerb).charAt(dictionaryVerb.length() - 2);
                     switch (secondLast) {
                         case 'い':
                         case 'え':
@@ -138,15 +145,6 @@ public class Verb {
                     throw new IllegalArgumentException("Not a proper verb in dictionary form");
             }
         }
-    }
-
-    private String tryToMakeHiragana() {
-        if (dictionaryVerb.equals("見る")) {
-            return "みる";
-        } else {
-            return dictionaryVerb;
-        }
-
     }
 
     private void checkVerbConcistency() {
