@@ -17,6 +17,15 @@ public class VerbTest {
     }
 
     @Test
+    public void masuFormDeduceMiru() throws Exception {
+        Verb verb = new Verb("見る");
+
+        String result = verb.asPoliteForm();
+
+        assertEquals("見ます", result);
+    }
+
+    @Test
     public void masuFormUSu() throws Exception {
         Verb verb = new Verb("話す", VerbType.u);
 
@@ -208,5 +217,111 @@ public class VerbTest {
         assertEquals("知らなかった", result);
     }
 
+    @Test
+    public void forceRu() {
 
+        Verb result = Verb.forceRu("勉強する");
+
+        assertEquals("勉強する", result.asDictionaryForm());
+        assertEquals(VerbType.ru, result.getVerbType());
+    }
+
+    @Test
+    public void forceRu2() {
+
+        Verb result = Verb.forceRu("泳ぐ");
+
+        assertEquals("泳る", result.asDictionaryForm());
+        assertEquals(VerbType.ru, result.getVerbType());
+    }
+
+    @Test
+    public void forceU() {
+
+        Verb result = Verb.forceU("食べる");
+
+        assertEquals("食べる", result.asDictionaryForm());
+        assertEquals(VerbType.u, result.getVerbType());
+    }
+
+    @Test
+    public void forceU2() {
+
+        Verb result = Verb.forceU("する");
+
+        assertEquals("する", result.asDictionaryForm());
+        assertEquals(VerbType.u, result.getVerbType());
+    }
+
+    @Test
+    public void forceSuru() {
+
+        Verb result = Verb.forceSuru("食べる");
+
+        assertEquals("食べする", result.asDictionaryForm());
+        assertEquals(VerbType.irregular, result.getVerbType());
+    }
+
+    @Test
+    public void forceSuru2() {
+
+        Verb result = Verb.forceSuru("書く");
+
+        assertEquals("書する", result.asDictionaryForm());
+        assertEquals(VerbType.irregular, result.getVerbType());
+    }
+
+    @Test
+    public void forceKuru() {
+
+        Verb result = Verb.forceKuru("食べる");
+
+        assertEquals("食べ来る", result.asDictionaryForm());
+        assertEquals(VerbType.irregular, result.getVerbType());
+    }
+
+    @Test
+    public void forceKuru2() {
+
+        Verb result = Verb.forceKuru("する");
+
+        assertEquals("す来る", result.asDictionaryForm());
+        assertEquals(VerbType.irregular, result.getVerbType());
+    }
+
+    @Test
+    public void nounForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asNounForm();
+
+        assertEquals("食べるの", result);
+    }
+
+    @Test
+    public void opinionQuoteForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asOpinionQuoteForm();
+
+        assertEquals("食べると思います", result);
+    }
+
+    @Test
+    public void heardQuoteForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asHeardQuoteForm();
+
+        assertEquals("食べると言っていました", result);
+    }
+
+    @Test
+    public void politeRefrainRequestForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asPoliteRefrainRequestForm();
+
+        assertEquals("食べないでください", result);
+    }
 }

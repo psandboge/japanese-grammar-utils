@@ -36,7 +36,7 @@ public class Verb {
         uVerbs.put("蘇る", "よみがえる");
     }
 
-    public Verb(String dictionaryVerb, VerbType verbType, boolean consistencyCheck) {
+    private Verb(String dictionaryVerb, VerbType verbType, boolean consistencyCheck) {
         this.dictionaryVerb = dictionaryVerb;
         this.verbType = verbType;
         if (consistencyCheck) {
@@ -51,6 +51,32 @@ public class Verb {
     public Verb(String dictionaryVerb) {
         this.dictionaryVerb = dictionaryVerb;
         deduceVerbType();
+    }
+
+    public static Verb forceRu(String s) {
+        if (s.length() > 1) {
+            return new Verb(s.substring(0, s.length() - 1) + 'る', VerbType.ru, false);
+        } else {
+            return new Verb(s + 'る', VerbType.ru, false);
+        }
+    }
+
+    public static Verb forceU(String s) {
+        return new Verb(s, VerbType.u, false);
+    }
+
+    public static Verb forceSuru(String s) {
+        if (s.endsWith("する")) {
+            return new Verb(s);
+        }
+        return new Verb(s.substring(0, s.length() - 1) + "する", VerbType.irregular, false);
+    }
+
+    public static Verb forceKuru(String s) {
+        if (s.endsWith("来る") || s.endsWith("くる")) {
+            return new Verb(s);
+        }
+        return new Verb(s.substring(0, s.length() - 1) + "来る", VerbType.irregular, false);
     }
 
     private void deduceVerbType() {
@@ -70,7 +96,7 @@ public class Verb {
                     verbType = VerbType.u;
                     break;
                 case 'る':
-                    char secondLast = dictionaryVerb.charAt(dictionaryVerb.length() - 2);
+                    char secondLast = tryToMakeHiragana().charAt(dictionaryVerb.length() - 2);
                     switch (secondLast) {
                         case 'い':
                         case 'え':
@@ -112,6 +138,15 @@ public class Verb {
                     throw new IllegalArgumentException("Not a proper verb in dictionary form");
             }
         }
+    }
+
+    private String tryToMakeHiragana() {
+        if (dictionaryVerb.equals("見る")) {
+            return "みる";
+        } else {
+            return dictionaryVerb;
+        }
+
     }
 
     private void checkVerbConcistency() {
@@ -334,7 +369,15 @@ public class Verb {
         return asShortNegForm() + "でください";
     }
 
-    public String asNoun() {
+    public String asNounForm() {
         return asShortForm() + 'の';
+    }
+
+    public String asDictionaryForm() {
+        return dictionaryVerb;
+    }
+
+    public VerbType getVerbType() {
+        return verbType;
     }
 }
