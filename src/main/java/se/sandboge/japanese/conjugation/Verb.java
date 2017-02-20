@@ -184,9 +184,6 @@ public class Verb {
 
     public String asStemForm() {
         if (verbType.equals(VerbType.ru)) {
-//            if (!(dictionaryVerb.charAt(dictionaryVerb.length() - 1) == 'る')) {
-//                throw new IllegalArgumentException("Ru verbs must end with る!");
-//            }
             return dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
         } else if (verbType.equals(VerbType.u)) {
             char end = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
@@ -377,5 +374,9 @@ public class Verb {
 
     public VerbType getVerbType() {
         return verbType;
+    }
+
+    public String asDesireForm() {
+        return asStemForm() + "たい";
     }
 }

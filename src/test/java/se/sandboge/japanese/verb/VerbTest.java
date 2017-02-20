@@ -324,4 +324,13 @@ public class VerbTest {
 
         assertEquals("食べないでください", result);
     }
+
+    @Test
+    public void desireForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asDesireForm();
+
+        assertEquals("食べたい", result);
+    }
 }
