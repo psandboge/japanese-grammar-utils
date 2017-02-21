@@ -266,7 +266,7 @@ public class Verb {
                 if (dictionaryVerb.endsWith("する")) {
                     return base.substring(0, base.length() - 1) + "して";
                 } else {
-                    return base.substring(0, base.length() - 1) + "来て";
+                    return base.substring(0, base.length() - 1) + "きて";
                 }
         }
         return "";
@@ -378,5 +378,9 @@ public class Verb {
 
     public String asDesireForm() {
         return asStemForm() + "たい";
+    }
+
+    public String asRepresentativeForm() {
+        return asShortPastForm() + "り";
     }
 }

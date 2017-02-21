@@ -333,4 +333,14 @@ public class VerbTest {
 
         assertEquals("食べたい", result);
     }
+
+    @Test
+    public void representativeForm() {
+        Verb verb = new Verb("食べる");
+
+        String result = verb.asRepresentativeForm();
+
+        assertEquals("食べたり", result);
+    }
+
 }
