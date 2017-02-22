@@ -104,4 +104,8 @@ public class Adjective {
         }
         return  null;
     }
+
+    public String asRepresentativeForm() {
+        return asShortPastForm() + "り";
+    }
 }

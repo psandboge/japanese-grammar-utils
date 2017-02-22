@@ -81,4 +81,13 @@ public class AdjectiveTest {
         assertEquals("元気じゃなかった", result);
     }
 
+    @Test
+    public void representativeForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asRepresentativeForm();
+
+        assertEquals("元気だったり", result);
+
+    }
 }
