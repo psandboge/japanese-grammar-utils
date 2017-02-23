@@ -13,6 +13,7 @@ public class Verb {
 
     private VerbType verbType;
     private static Map<String, String> uVerbs = new HashMap<>();
+
     static {
         uVerbs.put("要る", "要る");
         uVerbs.put("帰る", "かえる");
@@ -341,15 +342,15 @@ public class Verb {
     public String asShortPastForm() {
         String te = asTeForm();
         if (te.endsWith("て")) {
-            return te.substring(0, te.length() -1) + 'た';
+            return te.substring(0, te.length() - 1) + 'た';
         } else {
-            return te.substring(0, te.length() -1) + 'だ';
+            return te.substring(0, te.length() - 1) + 'だ';
         }
     }
 
     public String asShortPastNegForm() {
         String sn = asShortNegForm();
-        return sn.substring(0, sn.length() -1) + "かった";
+        return sn.substring(0, sn.length() - 1) + "かった";
     }
 
     public String asOpinionQuoteForm() {
@@ -382,5 +383,83 @@ public class Verb {
 
     public String asRepresentativeForm() {
         return asShortPastForm() + "り";
+    }
+
+    public String asPotentialForm() {
+        switch (verbType) {
+            case ru:
+                return asStemForm() + "られる";
+            case u:
+                char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+                String theRest = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
+                switch (last) {
+                    case 'う':
+                        return theRest + "える";
+                    case 'く':
+                        return theRest + "ける";
+                    case 'す':
+                        return theRest + "せる";
+                    case 'つ':
+                        return theRest + "てる";
+                    case 'ぶ':
+                        return theRest + "べる";
+                    case 'る':
+                        return theRest + "れる";
+                    case 'ぐ':
+                        return theRest + "げる";
+                    case 'む':
+                        return theRest + "める";
+                    case 'ぬ':
+                        return theRest + "ねる";
+                    default:
+                        throw new IllegalArgumentException("Unknown verb ending!");
+                }
+            case irregular:
+                if (dictionaryVerb.endsWith("来る") || dictionaryVerb.endsWith("くる")) {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "こられる";
+                } else {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "できる";
+                }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public String asPassiveForm() {
+        switch (verbType) {
+            case ru:
+                return asStemForm() + "られる";
+            case u:
+                char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+                String theRest = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
+                switch (last) {
+                    case 'う':
+                        return theRest + "われる";
+                    case 'く':
+                        return theRest + "かれる";
+                    case 'す':
+                        return theRest + "される";
+                    case 'つ':
+                        return theRest + "たれる";
+                    case 'ぶ':
+                        return theRest + "ばれる";
+                    case 'る':
+                        return theRest + "られる";
+                    case 'ぐ':
+                        return theRest + "がれる";
+                    case 'む':
+                        return theRest + "まれる";
+                    case 'ぬ':
+                        return theRest + "なれる";
+                    default:
+                        throw new IllegalArgumentException("Unknown verb ending!");
+                }
+            case irregular:
+                if (dictionaryVerb.endsWith("来る") || dictionaryVerb.endsWith("くる")) {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "こられる";
+                } else {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "される";
+                }
+        }
+        throw new IllegalArgumentException();
     }
 }

@@ -343,4 +343,22 @@ public class VerbTest {
         assertEquals("食べたり", result);
     }
 
+    @Test
+    public void potentialForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asPotentialForm();
+
+        assertEquals("手伝える", result);
+    }
+
+    @Test
+    public void passiveForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asPassiveForm();
+
+        assertEquals("手伝われる", result);
+    }
+
 }
