@@ -462,4 +462,21 @@ public class Verb {
         }
         throw new IllegalArgumentException();
     }
+
+    public String asIHearSoudesuForm() {
+        return asShortForm() + "そうです";
+    }
+
+    public String asIHearTteForm() {
+        return asShortForm() + "って";
+    }
+
+    public String asIfThenForm() {
+        return asShortPastForm() + "ら";
+    }
+
+    public String asIfThenNegForm() {
+        return asShortPastNegForm() + "ら";
+    }
+
 }

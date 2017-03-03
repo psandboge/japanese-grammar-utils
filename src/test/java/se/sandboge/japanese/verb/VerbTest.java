@@ -361,4 +361,39 @@ public class VerbTest {
         assertEquals("手伝われる", result);
     }
 
+    @Test
+    public void iHearSoudesuForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asIHearSoudesuForm();
+
+        assertEquals("手伝うそうです", result);
+    }
+
+    @Test
+    public void iHearTteForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asIHearTteForm();
+
+        assertEquals("手伝うって", result);
+    }
+
+    @Test
+    public void ifThenForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asIfThenForm();
+
+        assertEquals("手伝ったら", result);
+    }
+    @Test
+
+    public void ifThenNegForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asIfThenNegForm();
+
+        assertEquals("手伝わなかったら", result);
+    }
 }
