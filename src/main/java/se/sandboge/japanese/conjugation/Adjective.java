@@ -108,4 +108,20 @@ public class Adjective {
     public String asRepresentativeForm() {
         return asShortPastForm() + "り";
     }
+
+    public String asLooksLikeForm() {
+        switch(adjectiveType) {
+            case na:
+            case i:
+                return baseAdjective + "そうです";
+            case yoi:
+                return baseAdjective + "さそうです";
+        }
+        return  null;
+    }
+
+    public String asLooksLikeNegForm() {
+        String a = asShortNegForm();
+        return a.substring(0, a.length() - 1) + "さそうです";
+    }
 }

@@ -90,4 +90,25 @@ public class AdjectiveTest {
         assertEquals("元気だったり", result);
 
     }
+
+    @Test
+    public void looksLikeForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asLooksLikeForm();
+
+        assertEquals("元気そうです", result);
+
+    }
+
+    @Test
+    public void looksLikeNegForm() {
+        Adjective adjective = new Adjective("元気", AdjectiveType.na);
+
+        String result = adjective.asLooksLikeNegForm();
+
+        assertEquals("元気じゃなさそうです", result);
+
+    }
+
 }
