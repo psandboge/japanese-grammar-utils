@@ -479,4 +479,75 @@ public class Verb {
         return asShortPastNegForm() + "ら";
     }
 
+    public String asHaveALookAtForm() {
+        return asTeForm() + "みる";
+    }
+
+    public String asItIsPossibleForm() {
+        return asShortForm() + "かもしれません";
+    }
+
+    public String asItIsPossibleNegForm() {
+        return asShortNegForm() + "かもしれません";
+    }
+
+    public String asItIsPossiblePastForm() {
+        return asShortPastForm() + "かもしれません";
+    }
+
+    public String asItIsPossiblePastNegForm() {
+        return asShortPastNegForm() + "かもしれません";
+    }
+
+    public String asAdviceForm() {
+        return asShortPastForm() + "らどうですか";
+    }
+
+    public String asVolitionalForm() {
+        switch (verbType) {
+            case ru:
+                return asStemForm() + "よう";
+            case u:
+                char last = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+                String theRest = dictionaryVerb.substring(0, dictionaryVerb.length() - 1);
+                switch (last) {
+                    case 'う':
+                        return theRest + "おう";
+                    case 'く':
+                        return theRest + "こう";
+                    case 'す':
+                        return theRest + "そう";
+                    case 'つ':
+                        return theRest + "とう";
+                    case 'ぶ':
+                        return theRest + "ぼう";
+                    case 'る':
+                        return theRest + "ろう";
+                    case 'ぐ':
+                        return theRest + "ごう";
+                    case 'む':
+                        return theRest + "もう";
+                    case 'ぬ':
+                        return theRest + "のう";
+                    default:
+                        throw new IllegalArgumentException("Unknown verb ending!");
+                }
+            case irregular:
+                if (dictionaryVerb.endsWith("来る") || dictionaryVerb.endsWith("くる")) {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "こよう";
+                } else {
+                    return dictionaryVerb.substring(0, dictionaryVerb.length() - 2) + "しよう";
+                }
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public String asDeterminationForm() {
+        return asVolitionalForm() + "と思っています";
+    }
+
+    public String asPreparationForm() {
+        return asTeForm() + "おく";
+    }
+
 }

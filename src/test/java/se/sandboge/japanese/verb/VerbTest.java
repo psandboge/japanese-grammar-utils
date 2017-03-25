@@ -387,8 +387,8 @@ public class VerbTest {
 
         assertEquals("手伝ったら", result);
     }
-    @Test
 
+    @Test
     public void ifThenNegForm() {
         Verb verb = new Verb("手伝う");
 
@@ -396,4 +396,86 @@ public class VerbTest {
 
         assertEquals("手伝わなかったら", result);
     }
+
+    @Test
+    public void volitionalForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asVolitionalForm();
+
+        assertEquals("手伝おう", result);
+    }
+
+    @Test
+    public void adviceForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asAdviceForm();
+
+        assertEquals("手伝ったらどうですか", result);
+    }
+
+    @Test
+    public void itIsPossibleForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asItIsPossibleForm();
+
+        assertEquals("手伝うかもしれません", result);
+    }
+
+    @Test
+    public void itIsPossibleNegForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asItIsPossibleNegForm();
+
+        assertEquals("手伝わないかもしれません", result);
+    }
+
+    @Test
+    public void itIsPossiblePastForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asItIsPossiblePastForm();
+
+        assertEquals("手伝ったかもしれません", result);
+    }
+
+    @Test
+    public void itIsPossiblePastNegForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asItIsPossiblePastNegForm();
+
+        assertEquals("手伝わなかったかもしれません", result);
+    }
+
+    @Test
+    public void haveALookAtForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asHaveALookAtForm();
+
+        assertEquals("手伝ってみる", result);
+    }
+
+    @Test
+    public void determinationForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asDeterminationForm();
+
+        assertEquals("手伝おうと思っています", result);
+    }
+
+    @Test
+    public void preparationForm() {
+        Verb verb = new Verb("手伝う");
+
+        String result = verb.asPreparationForm();
+
+        assertEquals("手伝っておく", result);
+    }
+
 }
