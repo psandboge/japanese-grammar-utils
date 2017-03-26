@@ -624,7 +624,7 @@ public class Verb {
         return asTeForm() + "しまう";
     }
 
-    public String asFinishForma() {
+    public String asFinishForm() {
         return asRegretablyForm();
     }
 

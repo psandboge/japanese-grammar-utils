@@ -626,7 +626,7 @@ public class VerbTest {
     public void asFinishForma() {
         Verb verb = new Verb("読む");
 
-        String result = verb.asFinishForma();
+        String result = verb.asFinishForm();
 
         assertEquals("読んでしまう", result);
     }
@@ -659,7 +659,7 @@ public class VerbTest {
     }
 
     @Test
-    public void asAlternativWishForm() {
+    public void asAlternativeWishForm() {
         Verb verb = new Verb("聞く");
 
         String result = verb.asAlternativWishForm();
@@ -668,7 +668,7 @@ public class VerbTest {
     }
 
     @Test
-    public void asAlternativWishNegForm() {
+    public void asAlternativeWishNegForm() {
         Verb verb = new Verb("聞く");
 
         String result = verb.asAlternativWishNegForm();
