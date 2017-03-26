@@ -636,7 +636,7 @@ public class Verb {
         return asStemForm() + "ながら";
     }
 
-    public String asAlternativWishForm() {
+    public String asEbaForm() {
         char ending = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
         String theRest = asShortForm().substring(0, asShortForm().length() - 1);
         switch (ending) {
@@ -663,7 +663,15 @@ public class Verb {
         }
     }
 
-    public String asAlternativWishNegForm() {
+    public String asEbaNegForm() {
         return asShortNegForm().substring(0, asShortNegForm().length() -1) + "ければ";
+    }
+
+    public String asAlternativeWishForm() {
+        return asEbaForm() + "よかったです";
+    }
+
+    public String asAlternativeWishNegForm() {
+        return asEbaNegForm() + "よかったです";
     }
 }

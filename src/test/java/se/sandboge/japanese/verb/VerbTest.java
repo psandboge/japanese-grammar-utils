@@ -659,21 +659,39 @@ public class VerbTest {
     }
 
     @Test
+    public void asEbaForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asEbaForm();
+
+        assertEquals("聞けば", result);
+    }
+
+    @Test
+    public void asEbaNegForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asEbaNegForm();
+
+        assertEquals("聞かなければ", result);
+    }
+
+    @Test
     public void asAlternativeWishForm() {
         Verb verb = new Verb("聞く");
 
-        String result = verb.asAlternativWishForm();
+        String result = verb.asAlternativeWishForm();
 
-        assertEquals("聞けば", result);
+        assertEquals("聞けばよかったです", result);
     }
 
     @Test
     public void asAlternativeWishNegForm() {
         Verb verb = new Verb("聞く");
 
-        String result = verb.asAlternativWishNegForm();
+        String result = verb.asAlternativeWishNegForm();
 
-        assertEquals("聞かなければ", result);
+        assertEquals("聞かなければよかったです", result);
     }
 
 }
