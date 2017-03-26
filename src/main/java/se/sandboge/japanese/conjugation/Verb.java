@@ -468,7 +468,12 @@ public class Verb {
     }
 
     public String asIHearTteForm() {
-        return asShortForm() + "って";
+        String s = asShortForm();
+        if (s.endsWith("ん")) {
+            return s + "て";
+        } else {
+            return s + "って";
+        }
     }
 
     public String asIfThenForm() {
@@ -550,4 +555,115 @@ public class Verb {
         return asTeForm() + "おく";
     }
 
+    public String asPoliterRequestForm() {
+        return asTeForm() + "いただけませんか";
+    }
+
+    public String asRequestForm() {
+        return asTeForm() + "くれませんか";
+    }
+
+    public String asCasualRequestForm() {
+        return asTeForm() + "くれない";
+    }
+
+    public String asGoodWishForm() {
+        return asShortForm() + "といいですね";
+    }
+
+    public String asSelfWishForm() {
+        return asShortForm() + "といいんですが";
+    }
+
+    public String asSelfWishCasualForm() {
+        return asShortForm() + "といいんだけど";
+    }
+
+    public String asTeNegForm() {
+        String s = asShortNegForm();
+        return s.substring(0, s.length() - 1) + "くて";
+    }
+
+    public String asApologizeForForm() {
+        return asTeForm() + "すみませんでした";
+    }
+
+    public String asApologizeForNegForm() {
+        return asTeNegForm() + "すみませんでした";
+    }
+
+    public String asNeedNotForm() {
+        return asTeNegForm() + "もいいです";
+    }
+
+    public String asAppearsForm() {
+        return asShortForm() + "みたいです";
+    }
+
+    public String asAppearsNegForm() {
+        return asShortNegForm() + "みたいです";
+    }
+
+    public String asAppearsPastForm() {
+        return asShortPastForm() + "みたいです";
+    }
+
+    public String asAppearsPastNegForm() {
+        return asShortPastNegForm() + "みたいです";
+    }
+
+    public String asYBeforeXForm() {
+        return asShortForm() + "前に";
+    }
+
+    public String asYAfterXForm() {
+        return asTeForm() + "から";
+    }
+
+    public String asRegretablyForm() {
+        return asTeForm() + "しまう";
+    }
+
+    public String asFinishForma() {
+        return asRegretablyForm();
+    }
+
+    public String asCauseForm() {
+        return asShortForm() + "と";
+    }
+
+    public String asConcurrentActionForm() {
+        return asStemForm() + "ながら";
+    }
+
+    public String asAlternativWishForm() {
+        char ending = dictionaryVerb.charAt(dictionaryVerb.length() - 1);
+        String theRest = asShortForm().substring(0, asShortForm().length() - 1);
+        switch (ending) {
+            case 'う':
+                return theRest + "えば";
+            case 'く':
+                return theRest + "けば";
+            case 'す':
+                return theRest + "せば";
+            case 'つ':
+                return theRest + "てば";
+            case 'ぶ':
+                return theRest + "べば";
+            case 'る':
+                return theRest + "れば";
+            case 'ぐ':
+                return theRest + "げば";
+            case 'む':
+                return theRest + "めば";
+            case 'ぬ':
+                return theRest + "ねば";
+            default:
+                throw new IllegalArgumentException("Unknown verb ending!");
+        }
+    }
+
+    public String asAlternativWishNegForm() {
+        return asShortNegForm().substring(0, asShortNegForm().length() -1) + "ければ";
+    }
 }
