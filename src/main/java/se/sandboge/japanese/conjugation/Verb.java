@@ -674,4 +674,45 @@ public class Verb {
     public String asAlternativeWishNegForm() {
         return asEbaNegForm() + "よかったです";
     }
+
+    public String asRespectfulAdviceForm() {
+        if (verbType.equals(VerbType.irregular) && dictionaryVerb.endsWith("する")
+            || dictionaryVerb.equals("覧く")) {
+            return "ご" + asStemForm() + "ください";
+        } else {
+            return "お" + asStemForm() + "ください";
+        }
+    }
+
+    public String asThankYouForDoingForm() {
+        return asTeForm() + "くれてありがとう";
+    }
+
+    public String asThankYouForDoingHumbleForm() {
+        return asTeForm() + "くださってありがとうございました";
+    }
+
+    public String asIAmGladForm() {
+        return asTeForm() + "よかったです";
+    }
+
+    public String asIAmGladNegForm() {
+        return asTeNegForm() + "よかったです";
+    }
+
+    public String asSupposedToForm() {
+        return asShortForm() + "はずです";
+    }
+
+    public String asSupposedToNegForm() {
+        return asShortNegForm() + "はずです";
+    }
+
+    public String asSupposedToPastForm() {
+        return asShortPastForm() + "はずです";
+    }
+
+    public String asSupposedToPastNegForm() {
+        return asShortPastNegForm() + "はずです";
+    }
 }

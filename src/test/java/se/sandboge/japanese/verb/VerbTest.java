@@ -694,4 +694,85 @@ public class VerbTest {
         assertEquals("聞かなければよかったです", result);
     }
 
+    @Test
+    public void asRespectfulAdviceForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asRespectfulAdviceForm();
+
+        assertEquals("お聞きください", result);
+    }
+
+    @Test
+    public void asThankYouForDoingForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asThankYouForDoingForm();
+
+        assertEquals("聞いてくれてありがとう", result);
+    }
+
+    @Test
+    public void asThankYouForDoingHumbleForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asThankYouForDoingHumbleForm();
+
+        assertEquals("聞いてくださってありがとうございました", result);
+    }
+
+    @Test
+    public void asIAmGladForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asIAmGladForm();
+
+        assertEquals("聞いてよかったです", result);
+    }
+
+    @Test
+    public void asIAmGladNegForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asIAmGladNegForm();
+
+        assertEquals("聞かなくてよかったです", result);
+    }
+
+    @Test
+    public void asSupposedToForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asSupposedToForm();
+
+        assertEquals("聞くはずです", result);
+    }
+
+    @Test
+    public void asSupposedToNegForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asSupposedToNegForm();
+
+        assertEquals("聞かないはずです", result);
+    }
+
+    @Test
+    public void asSupposedToPastForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asSupposedToPastForm();
+
+        assertEquals("聞いたはずです", result);
+    }
+
+    @Test
+    public void asSupposedToPastNegForm() {
+        Verb verb = new Verb("聞く");
+
+        String result = verb.asSupposedToPastNegForm();
+
+        assertEquals("聞かなかったはずです", result);
+    }
+
 }
